@@ -6,6 +6,7 @@ body{
 .game-title {
     font-family: 'Exo', sans-serif;
     text-align: center;
+    color: #008080;
 }
 
 .instructions {
@@ -34,10 +35,91 @@ body{
     grid-gap: 10px;
     margin: 50px;
     justify-content: center;
+    perspective: 500px;
 }
 
 .card {
-    background-color: black;
+    position: relative;
     height: 175px;
     width: 125px;
 }
+
+.card-tile {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    border-width: 3px;
+    border-style: solid;
+    overflow: hidden;
+    transition: transform 500ms ease-in-out;
+}
+
+.card.view-front .card-back {
+    transform: rotateY(-180deg);
+}
+
+.card.view-front .card-front {
+    transform: rotateY(0);
+}
+
+.card.matched .card-front .tile-pair {
+  animation: dance 1s linear infinite 500ms;
+}
+
+@keyframes dance {
+  0%, 100% {
+    transform: rotate(0)
+  }
+  25% {
+    transform: rotate(-30deg)
+  }
+  75% {
+    transform: rotate(30deg)
+  }
+}
+
+.card-tile:hover .cat-head {
+  width: 90px;
+  height: 90px;
+}
+
+
+.card-tile:hover {
+    background:#FFA500;
+}
+
+
+.card-back {
+    background-color: #FFD700;
+}
+
+.card-front {
+    background-color: #FF7F50;
+    border-color: #FF4500;
+    transform: rotateY(180deg);
+}
+
+.tile-pair {
+    transition: transform 100ms ease-in-out;
+    transform: scale(0.9);
+}
+
+.card-front:hover .tile-pair {
+    transform: scale(1);
+}
+
+.cat-head {
+    align-self: flex-start;
+    transform: translateY(35px);
+    transition: transform 100ms ease-in-out;
+}
+
+.card-back:hover: .cat-head {
+    transform: translateY(0px);
+}
+
