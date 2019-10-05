@@ -1,0 +1,23 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    background-image: url("../assets/grey-img.jpg");
+}
+
+.game-title {
+    font-family: 'Exo', sans-serif;
+    text-align: center;
+}
+
+.instructions {
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box
+}
+
+.game-data {
+    color: #008080;
+    font-size: 2em;
+    font-family: 'Exo', sans-serif;
+}
