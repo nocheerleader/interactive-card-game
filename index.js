@@ -42,6 +42,22 @@ class MemoryMatch {
     }
     startGame() {
         this.cardToCheck = null;
+        this.totalClicks = 0;
+        this.timeRemaining = this.totalTime;
+        this.cardToCheck = null;
+        this.matchedCards = [];
+        this.busy = true;
+        }
+    flipCard(card) {
+        if(this.canFlipCard(card)) {
+            this.audioController.flip();
+            this.totalClicks++;
+            this.ticker.innerText = this.totalClicks;
+            card.classList.add('visible');
+        }
+    }
+    canFlipCard(card) {
+        return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
         }
     }
 
@@ -55,17 +71,18 @@ if (document.readyState == 'loading') {
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('start-prompt'));
     let cards = Array.from(document.getElementsByClassName('card'));
-
+    let game = new MemoryMatch(100, cards);
+    
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
             overlay.classList.remove('visible');
-
+            game.startGame();
         });
     });
 
     cards.forEach(card => {
         card.addEventListener('click', () => {
-
+            game.flipCard(card);
         });
     });
 }
