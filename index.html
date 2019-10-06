@@ -7,32 +7,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Exo:700|Roboto:300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script src="index.js" async></script>
 </head>
 
 <body>
+    
     <h1 class="game-title">Memory Match</h1>
     <p class="instructions">This is a memory game where you need to match pairs of cards.</br>
     Playing is very simple - you click to turn over one card and then try to find a matching card.</p>
     
     <div class="start-prompt visible">
-        CLICK TO START
+        START
     </div>
      <div id="game-over" class="start-prompt">
         GAME OVER 
-        <span class="restart-prompt">Click to Restart</span>
+        <span class="restart-prompt">Restart</span>
     </div>
      <div id="you-won" class="start-prompt">
         YOU WON!!!  
-        <span class="restart-prompt">Click to Restart</span>
+        <span class="restart-prompt">Restart</span>
     </div>
-    
+  
     <div class="game-container">
         <div class="game-info">
             <div class="game-data">
                 Timer <span id="timer">60</span>
             </div>
             <div class="game-data">
-                Count <span id="flip-count">0</span>
+                Flip Count <span id="flip-count">0</span>
             </div>
         </div>
         
@@ -167,5 +169,6 @@
         </div>
         
     </div>
+        
 </body>
 </html>
