@@ -31,7 +31,19 @@ class AudioController {
     }
 }
 
-
+class MemoryMatch {
+    constructor(totalTime, cards) {
+        this.cardsArray = cards;
+        this.totalTime = totalTime;
+        this.timeRemaining = totalTime;
+        this.timer = document.getElementById('timer')
+        this.ticker = document.getElementById('flip-count');
+        this.audioController = new AudioController();
+    }
+    startGame() {
+        this.cardToCheck = null;
+        }
+    }
 
 
 if (document.readyState == 'loading') {
