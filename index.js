@@ -36,10 +36,11 @@ class MemoryMatch {
         this.cardsArray = cards;
         this.totalTime = totalTime;
         this.timeRemaining = totalTime;
-        this.timer = document.getElementById('timer')
+        this.timer = document.getElementById('timer');
         this.ticker = document.getElementById('flip-count');
         this.audioController = new AudioController();
     }
+    
     startGame() {
         this.cardToCheck = null;
         this.totalClicks = 0;
@@ -47,7 +48,17 @@ class MemoryMatch {
         this.cardToCheck = null;
         this.matchedCards = [];
         this.busy = true;
-        }
+        setTimeout(() => {
+            this.audioController.startMusic();
+            this.shuffleCards(this.cardsArray);
+            this.countdown = this.startCountdown();
+            this.busy = false;
+        }, 500);
+        this.hideCards();
+        this.timer.innerText = this.timeRemaining;
+        this.ticker.innerText = this.totalClicks;
+    }
+        
     flipCard(card) {
         if(this.canFlipCard(card)) {
             this.audioController.flip();
