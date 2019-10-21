@@ -36,7 +36,7 @@ class MemoryMatch {
         this.cardsArray = cards;
         this.totalTime = totalTime;
         this.timeRemaining = totalTime;
-        this.timer = document.getElementById('timer')
+        this.timer = document.getElementById('timer');
         this.ticker = document.getElementById('flip-count');
         this.audioController = new AudioController();
     }
@@ -52,7 +52,7 @@ class MemoryMatch {
             this.shuffleCards(this.cardsArray);
             this.countdown = this.startCountdown();
             this.busy = false;
-        }, 500)
+        }, 500);
         this.hideCards();
         this.timer.innerText = this.timeRemaining;
         this.ticker.innerText = this.totalClicks;
@@ -87,7 +87,6 @@ class MemoryMatch {
             this.totalClicks++;
             this.ticker.innerText = this.totalClicks;
             card.classList.add('visible');
-            
             if(this.cardToCheck) {
                 this.checkForCardMatch(card);
             } else {
@@ -131,10 +130,10 @@ class MemoryMatch {
         });
     }
     getCardType(card) {
-        return card.getElementsByClassName('card-value')[0].src;
+        return card.getElementsByClassName('tile-pair')[0].src;
     }
     canFlipCard(card) {
-        return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
+       return (!this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck);
     }
 }
 
@@ -145,7 +144,7 @@ if (document.readyState == 'loading') {
 }
 
 function ready() {
-    let overlays = Array.from(document.getElementsByClassName('start-prompt'));
+    let overlays = Array.from(document.getElementsByClassName('overlay-start-prompt'));
     let cards = Array.from(document.getElementsByClassName('card'));
     let game = new MemoryMatch(60, cards);
     

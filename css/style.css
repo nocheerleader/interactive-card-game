@@ -82,7 +82,7 @@ body{
   }
 }
 
-.start-prompt {
+.overlay-start-prompt {
     display: none;
     position: fixed;
     top: 0;
@@ -96,11 +96,11 @@ body{
     color: #008080;
 }
 
-.restart-prompt {
+.overlay-restart-prompt {
     font-size: .3em;   
 }
 
-.start-prompt.visible {
+.overlay-start-prompt.visible {
     display: flex;
     flex-direction: column;
     animation: overlay-grow 500ms forwards;
