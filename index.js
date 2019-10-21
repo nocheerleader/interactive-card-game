@@ -75,6 +75,20 @@ class MemoryMatch {
         }
     }
     
+    startCountdown() {
+        return setInterval(() => {
+            this.timeRemaining--;
+            this.timer.innerText = this.timeRemaining;
+            if(this.timeRemaining === 0)
+                this.gameOver();
+        }, 1000);
+    }
+    gameOver() {
+        clearInterval(this.countdown);
+        this.audioController.gameOver();
+        document.getElementById('game-over').classList.add('visible');
+    }
+    
     // Fisher-Yates Shuffle see README.md for reference details 
     shuffleCards(cardsArray) { 
         for (let i = cardsArray.length - 1; i > 0; i--) {
