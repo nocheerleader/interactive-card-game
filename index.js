@@ -89,6 +89,12 @@ class MemoryMatch {
         document.getElementById('game-over').classList.add('visible');
     }
     
+    victory() {
+        clearInterval(this.countdown);
+        this.audioController.victory();
+        document.getElementById('you-won').classList.add('visible');
+    }
+    
     // Fisher-Yates Shuffle see README.md for reference details 
     shuffleCards(cardsArray) { 
         for (let i = cardsArray.length - 1; i > 0; i--) {
@@ -114,7 +120,7 @@ if (document.readyState == 'loading') {
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('start-prompt'));
     let cards = Array.from(document.getElementsByClassName('card'));
-    let game = new MemoryMatch(100, cards);
+    let game = new MemoryMatch(60, cards);
     
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
